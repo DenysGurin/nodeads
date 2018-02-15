@@ -14,6 +14,11 @@ class FilterElementsSerializer(serializers.ListSerializer):
 
 class ElementSerializer(serializers.ModelSerializer):
 
+    groups = serializers.HyperlinkedIdentityField(
+        view_name='groups-detail',
+        lookup_field='pk'
+    )
+
     def validate_picture(self, picture):
         
         check_image(picture)
